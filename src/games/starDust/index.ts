@@ -13,11 +13,11 @@ export default class Stardust extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image('sky', 'assets/sky.png')
-    this.load.image('platform', 'assets/platform.png')
-    this.load.image('star', 'assets/star.png')
-    this.load.image('bomb', 'assets/bomb.png')
-    this.load.spritesheet('dude', 'assets/dude.png', {
+    this.load.image('sky', 'assets/startDust/sky.png')
+    this.load.image('platform', 'assets/startDust/platform.png')
+    this.load.image('star', 'assets/startDust/star.png')
+    this.load.image('bomb', 'assets/startDust/bomb.png')
+    this.load.spritesheet('dude', 'assets/startDust/dude.png', {
       frameWidth: 32,
       frameHeight: 48
     })
