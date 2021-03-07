@@ -13,11 +13,11 @@ export default class Stardust extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image('sky', 'assets/startDust/sky.png')
-    this.load.image('platform', 'assets/startDust/platform.png')
-    this.load.image('star', 'assets/startDust/star.png')
-    this.load.image('bomb', 'assets/startDust/bomb.png')
-    this.load.spritesheet('dude', 'assets/startDust/dude.png', {
+    this.load.image('sky', 'assets/starDust/sky.png')
+    this.load.image('platform', 'assets/starDust/platform.png')
+    this.load.image('star', 'assets/starDust/star.png')
+    this.load.image('bomb', 'assets/starDust/bomb.png')
+    this.load.spritesheet('dude', 'assets/starDust/dude.png', {
       frameWidth: 32,
       frameHeight: 48
     })
@@ -71,17 +71,20 @@ export default class Stardust extends Phaser.Scene {
       frameRate: 10,
       repeat: -1
     })
+
     this.anims.create({
       key: 'turn',
       frames: [{ key: 'dude', frame: 4 }],
       frameRate: 20
     })
+
     this.anims.create({
       key: 'right',
       frames: this.anims.generateFrameNumbers('dude', { start: 5, end: 8 }),
       frameRate: 10,
       repeat: -1
     })
+
     this.physics.add.collider(this.player, platforms)
     this.cursors = this.input.keyboard.createCursorKeys()
 

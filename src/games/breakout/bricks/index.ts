@@ -1,0 +1,1 @@
+export { BrickFactory } from './brickFactory'
