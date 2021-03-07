@@ -2,7 +2,7 @@ import Phaser from 'phaser'
 import { Brick } from './brick'
 
 enum BrickType {
-  e,
+  ' ',
   A,
   B,
   C,
@@ -36,7 +36,7 @@ export class BrickFactory {
       .map((brickRow: string[], rIndex: number) => {
         return brickRow
           .map((type: string, cIndex: number) => {
-            if (type === 'e') {
+            if (type === ' ') {
               return null
             }
             const offSetX = Math.floor((brickAreaWidth - brickStackWidth) / 2)
@@ -55,23 +55,23 @@ export class BrickFactory {
   }
 
   public static levelOne = [
-    ['e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e'],
-    ['e', 'e', 'D', 'D', 'D', 'D', 'D', 'e', 'e'],
-    ['e', 'e', 'C', 'C', 'C', 'C', 'C', 'e', 'e'],
-    ['e', 'e', 'B', 'B', 'B', 'B', 'B', 'e', 'e'],
-    ['e', 'e', 'A', 'A', 'A', 'A', 'A', 'e', 'e'],
-    ['e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e'],
-    ['e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e'],
-    ['e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e'],
-    ['e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e']
+    [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+    [' ', ' ', 'D', 'D', 'D', 'D', 'D', ' ', ' '],
+    [' ', ' ', 'C', 'C', 'C', 'C', 'C', ' ', ' '],
+    [' ', ' ', 'B', 'B', 'B', 'B', 'B', ' ', ' '],
+    [' ', ' ', 'A', 'A', 'A', 'A', 'A', ' ', ' '],
+    [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+    [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+    [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+    [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
   ]
 
   public static levelTwo = [
-    ['e', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'e'],
-    ['e', 'D', 'D', 'D', 'e', 'D', 'D', 'D', 'e'],
-    ['e', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'e'],
-    ['e', 'B', 'B', 'B', 'e', 'B', 'B', 'B', 'e'],
-    ['e', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'e']
+    [' ', 'C', 'C', 'C', 'C', 'C', 'C', 'C', ' '],
+    [' ', 'D', 'D', ' ', ' ', 'D', 'D', 'D', ' '],
+    [' ', 'C', 'C', 'C', 'C', 'C', 'C', 'C', ' '],
+    [' ', 'B', 'B', 'B', ' ', 'B', 'B', 'B', ' '],
+    [' ', 'A', 'A', 'A', 'A', 'A', 'A', 'A', ' ']
   ]
 
   public static levelThree = [
