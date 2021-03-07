@@ -1,8 +1,7 @@
 import Phaser from 'phaser'
-import { Paddle } from './paddle'
-import { Brick } from './bricks/brick'
-import { BrickFactory } from './bricks'
-import { Ball } from './ball'
+import { Ball, Brick, Paddle } from './components'
+import { BrickFactory } from './factories'
+import { genBoundedRandom } from '../utils/math'
 
 export default class BreakOut extends Phaser.Scene {
   public assetsDir = 'assets/breakout'
@@ -26,32 +25,33 @@ export default class BreakOut extends Phaser.Scene {
   create() {
     this.cameras.main.setBackgroundColor('#D8D8D8')
     this.paddle = new Paddle(this, 500, 550)
+
+    // Setup Bricks using brick factory (default level one)
+    const brickFactory = new BrickFactory(this, BrickFactory.levelTwo)
+    this.bricks = this.physics.add.staticGroup(brickFactory.bricks)
+
     this.ball = new Ball(this, 500, 300)
 
     // Add a collider between ball and paddle.
     this.physics.add.collider(this.ball, this.paddle, this.collideBallPaddle)
 
-    // Setup Bricks
-    const brickFactory = new BrickFactory(this, BrickFactory.levelTwo)
-    this.bricks = this.physics.add.staticGroup(brickFactory.bricks)
-  }
-
-  update() {}
-
-  getRandomArbitrary = (min: number, max: number) => {
-    return Math.random() * (max - min) + min
+    // Add a collider between ball and bricks.
+    this.bricks.children.iterate((brick) =>
+      this.physics.add.collider(this.ball, brick, this.collideBallBrick)
+    )
   }
 
   collideBallPaddle = (ball: Ball, paddle: Paddle) => {
-    const bounceX = this.getRandomArbitrary(0.7, 1.6)
-    const bounceY = this.getRandomArbitrary(0.7, 1.6)
+    const bounceX = genBoundedRandom(0.7, 1.6)
+    const bounceY = genBoundedRandom(0.7, 1.6)
     ball.setBounce(bounceX, bounceY)
   }
 
   collideBallBrick = (ball: Ball, brick: Brick) => {
-    const bounceX = this.getRandomArbitrary(0.7, 1.6)
-    const bounceY = this.getRandomArbitrary(0.7, 1.6)
+    const bounceX = genBoundedRandom(0.7, 1.6)
+    const bounceY = genBoundedRandom(0.7, 1.6)
     ball.setBounce(bounceX, bounceY)
+    brick.hp--
   }
 }
 
